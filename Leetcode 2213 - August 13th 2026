@@ -1,0 +1,129 @@
+----------Leetcode 2213 solution in JAVA----------
+-----Longest Substring of One Repeating Character-----
+
+Solution:
+class Solution {
+    class Node {
+        int l, r, mx, lmx, rmx;
+        char lchar, rchar;
+        
+        Node(int l, int r) {
+            this.l = l;
+            this.r = r;
+            this.mx = 1;
+            this.lmx = 1;
+            this.rmx = 1;
+        }
+    }
+    
+    private Node[] tree;
+    private char[] chars;
+    
+    private void pushUp(int u) {
+        int left = u << 1, right = u << 1 | 1;
+        tree[u].lchar = tree[left].lchar;
+        tree[u].rchar = tree[right].rchar;
+        
+        tree[u].mx = Math.max(tree[left].mx, tree[right].mx);
+        tree[u].lmx = tree[left].lmx;
+        tree[u].rmx = tree[right].rmx;
+        
+        if (tree[left].rchar == tree[right].lchar) {
+            if (tree[left].mx == (tree[left].r - tree[left].l + 1)) {
+                tree[u].lmx = tree[left].mx + tree[right].lmx;
+            }
+            if (tree[right].mx == (tree[right].r - tree[right].l + 1)) {
+                tree[u].rmx = tree[right].mx + tree[left].rmx;
+            }
+            tree[u].mx = Math.max(tree[u].mx, tree[left].rmx + tree[right].lmx);
+        }
+    }
+    
+    private void build(int u, int l, int r) {
+        tree[u] = new Node(l, r);
+        if (l == r) {
+            tree[u].lchar = chars[l];
+            tree[u].rchar = chars[l];
+            return;
+        }
+        int mid = (l + r) >> 1;
+        build(u << 1, l, mid);
+        build(u << 1 | 1, mid + 1, r);
+        pushUp(u);
+    }
+    
+    private void update(int u, int index, char val) {
+        if (tree[u].l == tree[u].r) {
+            chars[index] = val;
+            tree[u].lchar = val;
+            tree[u].rchar = val;
+            return;
+        }
+        int mid = (tree[u].l + tree[u].r) >> 1;
+        if (index <= mid) {
+            update(u << 1, index, val);
+        } else {
+            update(u << 1 | 1, index, val);
+        }
+        pushUp(u);
+    }
+
+    public int[] longestRepeating(String s, String queryCharacters, int[] queryIndices) {
+        int n = s.length();
+        chars = s.toCharArray();
+        tree = new Node[n * 4];
+        build(1, 0, n - 1);
+        
+        int k = queryIndices.length;
+        int[] ans = new int[k];
+        for (int i = 0; i < k; i++) {
+            update(1, queryIndices[i], queryCharacters.charAt(i));
+            ans[i] = tree[1].mx;
+        }
+        return ans;
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**** This Approach also passes 47/57 testcases on leetcod on August 13th 2026 ****
+** ERROR : TIME LIMIT EXCEEDED (Oops... Failure is the mother of success! Your solution exceeded the time limit, but you have a solid grasp of the brute-force logic.) **
+
+
+THIS APPROACH NEEDED SOME MORE KNOWLEDGE And I am on it... 
+
+class Solution {
+    public static class Counter{
+        
+    private static int count(HashMap<Integer,Character>map){
+        int max=1;
+        int smax=1;
+        // int i=0;
+        for(int i=1;i<map.size();i++){
+            if(map.get(i).equals(map.get(i-1))){
+                smax++;
+            }
+            else{
+                smax=1;
+            }
+            max=Math.max(max,smax);
+        }
+        return max;
+    }
+    }
+    public int[] longestRepeating(String s, String queryCharacters, int[] queryIndices) {
+      HashMap<Integer,Character> map=new HashMap<>();
+        int ans=0;
+        for(int i=0 ;i<s.length();i++){
+            map.put(i,s.charAt(i));
+        }
+     int[] res=new int[queryIndices.length];
+     for(int i=0;i<queryIndices.length;i++){
+          int index=queryIndices[i];
+          map.put(index,queryCharacters.charAt(i));
+          int ians=Counter.count(map);
+          res[i]=ians;
+      }
+return res;
+        
+    }    
+}
