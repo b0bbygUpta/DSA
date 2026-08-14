@@ -39,3 +39,23 @@ class Solution {
 
 Approach II:
 // Using an int array to count frequency of the characters in the given String
+
+class Solution {
+    public int maximumLengthSubstring(String s) {
+        int[] count=new int[26];
+        int l=-1;
+        int maxLength=0;
+        for(int r=0;r<s.length();r++){
+            char front=s.charAt(r);
+            count[front-'a']++;
+
+            while(count[front-'a']>2){
+                l++;
+                char back=s.charAt(l);
+                count[back-'a']--;
+            }
+        maxLength=Math.max(maxLength,r-l);
+        }
+        return maxLength;
+    }
+}
