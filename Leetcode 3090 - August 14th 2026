@@ -1,0 +1,41 @@
+----- Leetcode 3090 - August 14th 2026 -----
+Maximum Length Substring with two occurance 
+
+Apporach I:
+// Using Map and Counter class
+class Solution {
+    static class Counter{
+        int cnt=0;
+    }
+    public int maximumLengthSubstring(String s) {
+         int n=s.length();
+        Map<Character,Counter> map=new HashMap<>();
+        int ll=0;
+        int rr=0;
+        int ans=0;
+        while(rr<n){
+            // int i=nums[rr++];
+            char i=s.charAt(rr++);
+            Counter count=map.get(i);
+            if(count == null) map.put(i,count=new Counter());
+            count.cnt++;
+            
+            while(count.cnt>2){
+                // int j=nums[ll++];
+                char j=s.charAt(ll++);
+                Counter count2=map.get(j);
+                count2.cnt--;
+            }
+            // the code is below
+            
+            ans=Math.max(ans,rr-ll);
+        }
+        return ans;
+    }
+}
+// Addition infomation this approach is exactly same as Leetcode 2958 (Daily Problem of August 12th 2026) Length Of Longest Subarray With at most K frequency
+
+
+
+Approach II:
+// Using an int array to count frequency of the characters in the given String
