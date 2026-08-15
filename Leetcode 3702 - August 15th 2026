@@ -1,0 +1,23 @@
+----- Leetcode 3702 - August 15th 2026 -----
+-- Longest Subsequence With Non-Zero Bitwise XOR --
+
+APPROACH I:
+// Using simple logic of XOR in nums array
+
+class Solution {
+    public int longestSubsequence(int[] nums) {
+        int n=nums.length;
+        int totalxor=0;
+        boolean allZero=true;
+        for(int x: nums){
+        totalxor^=x;
+          if(x>0){
+            allZero=false;
+          }
+        }
+      if(totalxor>0){
+        return n;
+      }
+    return allZero?0:n-1;
+    }
+}
