@@ -1,0 +1,17 @@
+----- Leetcode 104 -----
+-- Maximum Depth of Binary Tree --
+
+// Using recursion to find Max Depth 
+
+class Solution{
+    public int maxDepth(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        else{
+            int lm=maxDepth(root.left);
+            int rm=maxDepth(root.right);
+            return Math.max(lm,rm)+1;
+        }
+    }
+}
