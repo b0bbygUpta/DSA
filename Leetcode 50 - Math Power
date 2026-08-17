@@ -19,3 +19,13 @@ class Solution {
         else return x*helper(x*x,n/2);
     }
 }
+
+APPROACH II:
+// Using In-built function form Math
+
+class Solution{
+    public double myPow(double x, int n){
+        return Math.pow(x,n);
+    }
+}
+
