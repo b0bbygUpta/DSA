@@ -1,0 +1,38 @@
+----- Leetcode 3471 ----- 
+-- Find the Largest Almost Missing Integer --
+
+APPROACH I:
+// Using built-in Math.sort() function for 'nums array', HashMap, PriorityQueue (maximum PriorityQueue)
+
+class Solution {
+    public int largestInteger(int[] nums, int k) {
+        
+        if(k == nums.length){
+            // int max=Integer.MIN_VALUE;
+            Arrays.sort(nums);
+            return nums[k-1];
+
+        }
+        Map<Integer,Integer> map=new HashMap<>();
+        
+        for(int i=0;i<nums.length-k+1;i++){
+            int[] res=new int[k];
+            res=Arrays.copyOfRange(nums,i,i+k);
+            for(int j: res){
+                map.put(j,map.getOrDefault(j,0)+1);
+            }
+        }
+        PriorityQueue<Integer> q=new PriorityQueue<>((a,b) -> b-a);
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            if(entry.getValue() == 1){
+                q.add(entry.getKey());
+            }
+        }
+        if(!q.isEmpty()){
+            return q.peek();
+        }
+        else{
+            return -1;
+        }
+    }
+}
