@@ -1,0 +1,36 @@
+----- Leetcode 1386 ----- 
+-- Cinema Seat Allocation --
+
+class Solution {
+    public int maxNumberOfFamilies(int n, int[][] reservedSeats) {
+        int left=0b11110000;
+        int mid=0b11000011;
+        int right=0b00001111;
+
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int[] seats: reservedSeats){
+            if(seats[1]>1 && seats[1]<10){
+                int origin=map.containsKey(seats[0]) 
+                ? map.get(seats[0])
+                : 0;
+                int value=origin | (1 << (seats[1]-2));
+                map.put(seats[0],value);
+            }
+        }
+
+        int ans=(n-map.size())*2;
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            int row=entry.getKey(),
+                bitmask=entry.getValue();
+            if(
+                (bitmask | left) == left || 
+                (bitmask | mid) == mid ||
+                (bitmask | right) == right
+            ){
+                ans++;
+                // ++ans;
+            }
+        }
+        return ans;
+    }
+}
