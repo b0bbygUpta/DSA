@@ -1,0 +1,70 @@
+----- Leetcode 3069 -----
+-- Distribute Elements into Two Arrays -- 
+
+APPROACH I:
+
+// Using LinkedList, because initially I couldn't predict size of the arrays
+//  helper function takes List 1 and List 2 as input, and returns an array as output as needed to submit this challenge 
+class Solution {
+    public int[] resultArray(int[] nums) {
+        List<Integer> l1=new ArrayList<>();
+        l1.add(nums[0]);
+        int l1ptr=0;
+        List<Integer> l2=new ArrayList<>();
+        l2.add(nums[1]);
+        int l2ptr=0;
+        for(int i=2;i<nums.length;i++){
+            if(l1.get(l1ptr)>l2.get(l2ptr)){
+            l1.add(nums[i]);
+            l1ptr++;
+            }
+            else{
+            l2.add(nums[i]);
+            l2ptr++;
+            }
+        }
+
+      return helper(l1,l2);
+
+    }
+
+
+    // private int[] helper(int[] arr1, int[] arr2){
+    //     int m=arr1.length;
+    //     int n=arr2.length;
+
+    //     int[] res=new int[m+n];
+    //     for(int i=0;i<res.length;i++){
+    //         if(i>m){
+    //             res[i]=arr1[i];
+    //         }
+    //         else{
+    //             res[i]=arr2[i-m];
+    //         }
+    //     }
+    //     return res;
+
+    // }
+
+
+    
+    public static int[] helper(List<Integer> l1, List<Integer> l2){
+      int m=l1.size();
+      int n=l2.size();
+
+      int[] res=new int[m+n];
+      for(int i=0;i<res.length;i++){
+        if(i<m){
+          res[i]=l1.get(i);
+        }
+        else{
+          res[i]=l2.get(i-m);
+        }
+      }
+      
+      System.out.println("res address: "+res);
+      System.out.println("res: "+Arrays.toString(res));
+
+      return res;
+    }
+}
