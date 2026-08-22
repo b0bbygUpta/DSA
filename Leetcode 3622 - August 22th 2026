@@ -1,0 +1,31 @@
+----- Leetcode 3622 -----
+-- Check Divisibility by Digit Sum and Product --
+
+APPROACH I:
+// Using two different functions for 'Product' and 'Sum'
+
+class Solution {
+    public boolean checkDivisibility(int n) {
+        int addition=product(n)+sum(n);
+        if(n % addition == 0){
+            return true;
+        }
+        return false;
+    }
+    private int product(int n){
+        int p=1;
+        while(n>0){
+            p*=n%10;
+            n/=10;
+        }
+        return p;
+    }
+    private int sum(int n){
+        int s=0;
+        while(n>0){
+            s+=n%10;
+            n/=10;
+        }
+        return s;
+    }
+}
