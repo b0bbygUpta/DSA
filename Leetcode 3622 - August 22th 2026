@@ -56,3 +56,28 @@ class Solution {
         return add;
     }
 }
+
+APPROACH III:
+// Without any function approach
+
+class Solution {
+    public boolean checkDivisibility(int n) {
+       
+        int temp=n;
+        int sum=0;
+        int product=1;
+        while(n>0){
+            int d=n%10;
+            sum+=d;
+            product*=d;
+            n/=10;
+        }
+        int add=sum+product;
+        
+       
+        if(temp % add == 0){
+            return true;
+        }
+        return false;
+    }
+}
