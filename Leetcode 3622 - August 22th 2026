@@ -29,3 +29,30 @@ class Solution {
         return s;
     }
 }
+
+
+APPROACH II:
+// Using a single function for both 'Sum' and 'Product'
+
+class Solution {
+    public boolean checkDivisibility(int n) {
+        if(n % addition(n) == 0){
+            return true;
+        }
+        return false;
+    }
+    private int addition(int n){
+        int temp=n;
+        int sum=0;
+        int product=1;
+        while(n>0){
+            int d=n%10;
+            sum+=d;
+            product*=d;
+            n/=10;
+        }
+        int add=sum+product;
+        
+        return add;
+    }
+}
