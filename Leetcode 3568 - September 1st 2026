@@ -1,0 +1,123 @@
+----- Leetcode 3568 ----- 
+-- Minimum Moves to Clean the Classroom -- 
+
+
+class Solution {
+
+    static final int[] dx = { 0, 1, 0, -1 };
+    static final int[] dy = { 1, 0, -1, 0 };
+
+    public int minMoves(String[] classroom, int energy) {
+        int m = classroom.length;
+        int n = classroom[0].length();
+        int[][] id = new int[m][n];
+        int sx = 0,
+            sy = 0,
+            cnt = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                char c = classroom[i].charAt(j);
+                if (c == 'S') {
+                    sx = i;
+                    sy = j;
+                } else if (c == 'L') {
+                    id[i][j] = 1 << cnt;
+                    cnt++;
+                }
+            }
+        }
+        int full = 1 << cnt;
+        int[][][] bestEnergy = new int[m][n][full];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                Arrays.fill(bestEnergy[i][j], -1);
+            }
+        }
+
+        bestEnergy[sx][sy][0] = energy;
+
+        class Info {
+
+            int x, y, mask, e, steps;
+
+            Info(int x, int y, int mask, int e, int steps) {
+                this.x = x;
+                this.y = y;
+                this.mask = mask;
+                this.e = e;
+                this.steps = steps;
+            }
+        }
+        Deque<Info> q = new ArrayDeque<>();
+        q.addLast(new Info(sx, sy, 0, energy, 0));
+        while (!q.isEmpty()) {
+            Info t = q.removeFirst();
+            if (t.mask == full - 1) {
+                return t.steps;
+            }
+            if (t.e == 0) {
+                continue;
+            }
+            for (int d = 0; d < 4; d++) {
+                int nx = t.x + dx[d];
+                int ny = t.y + dy[d];
+                if (
+                    nx < 0 ||
+                    nx >= m ||
+                    ny < 0 ||
+                    ny >= n ||
+                    classroom[nx].charAt(ny) == 'X'
+                ) {
+                    continue;
+                }
+                int ne = classroom[nx].charAt(ny) == 'R' ? energy : t.e - 1;
+                int nmask = t.mask | id[nx][ny];
+                if (ne > bestEnergy[nx][ny][nmask]) {
+                    bestEnergy[nx][ny][nmask] = ne;
+                    q.addLast(new Info(nx, ny, nmask, ne, t.steps + 1));
+                }
+            }
+        }
+        return -1;
+    }
+}
+
+
+
+
+******************** EXPALINATION ************************
+
+Approach: Breadth-First Search
+Intuition
+We can use Breadth-First Search (BFS) to calculate the shortest path. In addition to the basic position coordinates x and y, our BFS state must also track the current energy e, the number of steps taken steps, and the set of already collected litter. We can efficiently represent the collected litter using a bitmask, where each piece of litter is assigned a unique bit identifier starting from 0.
+
+During the search process, move in four directions from the current state (x,y,mask,e,steps), and update the state as follows:
+
+Current position: (nx,ny).
+
+Collected litter mask: If the current position is ’L’, add the identifier of this piece of litter to mask; otherwise, the mask remains unchanged.
+
+If the current position is ’R’, update the energy of the current position to energy; otherwise, update it to e−1.
+
+Update the steps of the current position to one more than the previous step.
+
+The starting point of our BFS is (sx,sy,0,energy,0), where (sx,sy) is the student's starting position. The target endpoint is any valid state where the mask equals fullMask (representing the collection of all litter).
+
+During the BFS, we use a 3D array bestEnergy[x][y][mask] to record the maximum energy value reached at position (x,y) for each possible mask state. We only enqueue a new state and update bestEnergy[x][y][mask] if the remaining energy is strictly greater than the previously recorded energy for that configuration. This pruning prevents redundant cycles, such as repeatedly jumping back and forth between two positions.
+
+Implementation
+
+Complexity Analysis
+Let m and n be the number of rows and columns of the matrix respectively, energy be the total energy, and k be the number of occurrences of ’L’ in the matrix.
+
+Time complexity: O(mn⋅energy⋅2 
+k
+ ).
+
+The state is determined by position and a binary mask, and the corresponding energy bestEnergy[x][y][mask] for the same position and mask may take up to energy different values.
+
+Space complexity: O(mn⋅energy⋅2 
+k
+ ).
+
+This is the space required by the queue.
