@@ -4,10 +4,31 @@
 // ******************************** JAVA SOLUTION **********************************
 
 
-//  APPROACH I: 
+//  APPROACH I:
+
 class Solution{
   public int goodNodes(TreeNode root){
-    return goofNodesHelper(root,new ArrayList<>());
+    return countNode(root, Integer.MIN_VALUE);
+  }
+  private int countNode(TreeNode node, int max){
+    if(node == null) return 0;
+    int count=0;
+    if(node.val >= max){
+      count=1;
+      max=node.val;
+    }
+    count+=countNode(node.left, max);
+    count+=countNode(node.right, max);
+
+    return count;
+  }
+}
+
+
+//  APPROACH II: 
+class Solution{
+  public int goodNodes(TreeNode root){
+    return goodNodesHelper(root,new ArrayList<>());
   }
   private int goodNodesHelper(TreeNode node, List<Integer> maxStack){
     if(maxStack.size() == 0){
