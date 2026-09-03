@@ -1,0 +1,14 @@
+// ----- Leetcode 3875 ----- 
+// -- Construct Uniform Parity Array I
+
+// ******************************************* JAVA SOLUTION **************************************************
+
+APPROACH I:
+// Simplest approach 
+
+class Solution {
+
+    public boolean uniformArray(int[] nums1) {
+        return true;
+    }
+}
