@@ -33,3 +33,32 @@ class Solution {
 
     }
 }
+
+
+APPROACH III:
+// Using Recursion to do the job
+
+class Solution {
+    public boolean uniformArray(int[] nums1) {
+        return checkUniform(nums1, 0, 0, 0);
+    }
+
+    private boolean checkUniform(int[] nums1, int index, int even, int odd) {
+        
+        if (index == nums1.length) {
+        
+            if(even == nums1.length) return true;
+            if(odd == nums1.length) return true;
+        }
+
+        
+        if(index>0 && index<nums1.length){
+            if (nums1[index-1] % 2 == 0) {
+                return checkUniform(nums1, index + 1, even + 1, odd);
+            } else {
+                return checkUniform(nums1, index + 1, even, odd + 1);
+            }
+        }
+        return true;    
+    }
+}
