@@ -12,3 +12,24 @@ class Solution {
         return true;
     }
 }
+
+APPROACH II:
+// Using for-loop and two variables 'even' and 'odd'
+
+class Solution {
+    public boolean uniformArray(int[] nums1) {
+        // return true;
+        int even=0, odd=0;
+        for(int i: nums1){
+            if(i%2 == 0){
+                even++;
+            }
+            odd++;
+        }
+        if(even == nums1.length || odd == nums1.length){
+            return true;
+        }
+        return false;
+
+    }
+}
