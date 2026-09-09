@@ -1,7 +1,9 @@
 // -- Leetcode 3871 -- 
 // -- Count Commas in Range 2 -- 
 
-
+APPROCACH I: 
+// Using basic Mathematical operations.
+    
 class Solution {
     public long countCommas(long n) {
         long p=1000, res=0;
