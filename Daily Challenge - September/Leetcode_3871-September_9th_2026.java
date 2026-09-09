@@ -30,3 +30,22 @@ class Solution {
         return (n-p+1)+helper(n,p*1000);
     }
 }
+
+APPROACH III: 
+// Using Backtracking Method
+
+// Using a hepler fuction based on backtracking 
+
+class Solution {
+    public long countCommas(long n) {
+        return backtracking(n, 1000, 0);
+    }
+    private long backtracking(long n, long p, long res){
+        if(p>n){
+            return res;
+        }
+        long ans=res+(n-p+1);
+
+        return backtracking(n, p*1000, ans);
+    }
+}
