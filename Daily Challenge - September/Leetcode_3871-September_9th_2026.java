@@ -49,3 +49,27 @@ class Solution {
         return backtracking(n, p*1000, ans);
     }
 }
+
+
+APPROACH IV:
+// Using DFS Method
+
+class Solution {
+    public long countCommas(long n) {
+        return dfs(n, 1000);
+    }
+
+    private long dfs(long n, long p) {
+        if (p > n) {
+            return 0; // base case: stop when p exceeds n
+        }
+        // process current node (contribution for this p)
+        long contribution = n - p + 1;
+
+        // recurse deeper (next power of 1000)
+        long deeper = dfs(n, p * 1000);
+
+        // combine current + deeper
+        return contribution + deeper;
+    }
+}
