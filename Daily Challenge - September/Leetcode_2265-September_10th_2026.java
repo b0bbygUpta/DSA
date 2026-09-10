@@ -79,3 +79,34 @@ class Solution {
 
     }
 }
+
+
+APPROACH II: 
+// Using class Pair to store child-count and sum-of-subtree
+// Really good approach while keeping time-taken and storage used in mind
+  
+class Solution {
+    class pair{
+        int sum,c; 
+        pair(int sum, int c){
+            this.sum=sum;
+            this.c=c;
+        }
+    }
+    int count=0;
+    public int averageOfSubtree(TreeNode root) {
+        if(root == null) return 0;
+        dfs(root);
+        return count;
+    }
+    
+    pair dfs(TreeNode root){
+        if(root == null) return new pair(0,0);
+        pair p1=dfs(root.left);
+        pair p2=dfs(root.right);
+        int sum=p1.sum+p2.sum+root.val;
+        int c=p1.c+p2.c+1;
+        if(sum/c == root.val) count++;
+        return new pair(sum,c);
+    }
+}
