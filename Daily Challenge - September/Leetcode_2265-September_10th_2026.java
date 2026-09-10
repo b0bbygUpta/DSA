@@ -110,3 +110,45 @@ class Solution {
         return new pair(sum,c);
     }
 }
+
+APPROACH III:
+// Using breath_first_search 
+  // not a opitmal solution
+  
+class Solution {
+    class pair{
+        int sum,c;
+        pair(int sum, int c){
+            this.sum=sum;
+            this.c=c;
+        }
+    }
+    public int averageOfSubtree(TreeNode root) {
+        if(root == null) return 0;
+        int res=0;
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            TreeNode node=q.poll();
+            pair p=bfs(node);
+            int avg=p.sum/p.c;
+            if(avg == node.val){
+                res++;
+            }
+            if(node.left != null) q.offer(node.left);
+            if(node.right != null) q.offer(node.right);
+        }
+        return res;
+    }
+    pair bfs(TreeNode root){
+        if(root == null) return new pair(0,0);
+
+        pair l=bfs(root.left);
+        pair r=bfs(root.right);
+        
+        int sum=l.sum+r.sum+root.val;
+        int c=l.c+r.c+1;
+
+        return new pair(sum,c);
+    }
+}
