@@ -95,3 +95,13 @@ class Solution {
     }
 }
 
+
+COMPLEXITY: 
+
+/*
+Time: O(1)
+A fixed number of comparisons and arithmetic operations.
+
+Space: O(1)
+Only a few integer variables are used.
+*/
