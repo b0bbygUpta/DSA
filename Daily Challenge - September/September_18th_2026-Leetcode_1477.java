@@ -3,7 +3,7 @@
 
 
 APPROACH I: 
-  // Sliding window + Dynamic Programming
+  // Prefix Sum + Dynamic Programming + Hash Table
   
 class Solution {
 
@@ -28,3 +28,6 @@ class Solution {
         return ans == n + 1 ? -1 : ans;
     }
 }
+
+
+ // Sliding window + Dynamic Programming
