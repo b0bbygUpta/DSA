@@ -10,3 +10,17 @@ class Solution {
         return ans;
     }
 }
+
+
+/* 
+
+Complexity Analysis :- 
+
+
+    Time complexity: O(n). 
+        We traverse the string once. 
+
+    Space complexity: O(1).
+        We are just using couple of variables.
+
+*/
