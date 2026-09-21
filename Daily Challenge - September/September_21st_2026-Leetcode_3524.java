@@ -22,3 +22,15 @@ class Solution {
         return result;
     }
 }
+
+
+/* 
+Complexity Analysis :-
+
+Time complexity: O(nk).
+    For each to the n elements in nums, we iterate through all k possible remainders to perform the state transition.
+
+Space complexity: O(k).
+    The rolling array dp (and ndp) requires O(k) auxiliary space.
+
+*/
