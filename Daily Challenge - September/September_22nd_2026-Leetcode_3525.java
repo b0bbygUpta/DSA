@@ -108,3 +108,19 @@ class Solution {
         return ans;
     }
 }
+
+
+/*
+
+
+Complexity Analysis: 
+
+Let n be the length of nums and q be the number of queries.
+
+Time complexity: O((n+q)klogn).
+    Building the segment tree takes O(nk) time. Each of the q queries performs a point update and a range query, each taking O(klogn) time. This yields an overall time complexity of O((n+q)klogn).
+
+Space complexity: O(nk).
+    The segment tree contains O(n) nodes, each storing an array of length k+1.
+
+*/
