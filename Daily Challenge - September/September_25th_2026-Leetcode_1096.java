@@ -169,3 +169,24 @@ class Solution {
         stk.remove(stk.size() - 1);
     }
 }
+
+
+/* 
+
+Complexity Analysis
+Let n be the length of expression, and M be the maximum number of words in any set (M≤2^n/5
+  in the worst case).
+
+Time complexity: O(n⋅M)
+
+Stack operations take O(n) time, while evaluating intermediate Cartesian products and unions processes up to M strings of length up to O(n). Because n≤60, M remains small, ensuring fast execution.
+
+Space complexity: O(n⋅M)
+
+Dominated by storing sets of strings on the operand stack, along with O(n) space for the stack structures themselves.
+
+
+
+
+
+*/
