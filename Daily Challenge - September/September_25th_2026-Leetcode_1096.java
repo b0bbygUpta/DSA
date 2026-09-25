@@ -74,6 +74,23 @@ class Solution {
     }
 }
 
+/* 
+
+Complexity Analysis
+Let n be the length of expression, and M be the maximum number of words in any set (M≤2^n/5
+  in the worst case).
+
+Time complexity: O(n⋅M).
+
+Traversal takes O(n) time, while intermediate Cartesian products and unions process up to M strings of length up to O(n). With n≤60, M≤4096, easily running within time limits.
+
+Space complexity: O(n⋅M).
+
+Dominated by storing intermediate and final sets of strings of length up to O(n), alongside O(n) recursion stack space.
+
+*/
+
+
 APPROACH II: 
   Using Stack 
 
