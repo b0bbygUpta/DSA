@@ -28,7 +28,7 @@ class Solution {
     private void reverse(StringBuilder sb, int s, int e){
         while(s<e){
             char temp=sb.charAt(s);
-            sb.setCharAt(s++, sb.charAt(e));
+   T         sb.setCharAt(s++, sb.charAt(e));
             sb.setCharAt(e--, temp);
         }
     }
@@ -45,5 +45,40 @@ SPACE COMPLEXITY: O(n)
 
 */
 
+
+APPROACH II :
+  // Using Wormhole Teleportation Technique 
+  
+class Solution {
+    public String reverseParentheses(String s) {
+        int n=s.length();
+        Stack<Integer> open=new Stack<>();
+        int[] pair=new int[n];
+
+        for(int i=0;i<n;i++){
+            if(s.charAt(i) == '('){
+                open.push(i);
+            }
+            if(s.charAt(i) == ')'){
+                int j=open.pop();
+                pair[i]=j;
+                pair[j]=i;
+            }
+        }
+        StringBuilder res=new StringBuilder();
+
+        for(int curr=0, dir=1; curr<n; curr+=dir){
+            if(s.charAt(curr) == '(' || s.charAt(curr) == ')'){
+                curr=pair[curr];
+                dir=-dir;
+            }
+            else{
+                res.append(s.charAt(curr));
+            }
+        }
+
+        return res.toString();
+    }
+}
 
 
