@@ -2,6 +2,7 @@
 // -- Reverse Substrings Between Each Pair of Paranthesis -- 
 
 APPROACH I :
+  // Using Straightforword approach 
   
 class Solution {
     public String reverseParentheses(String s) {
@@ -32,3 +33,17 @@ class Solution {
         }
     }
 }
+
+/*
+
+COMPLEXITY 
+
+TIME COMPLEXITY: O(n^2)
+
+SPACE COMPLEXITY: O(n)
+
+
+*/
+
+
+
