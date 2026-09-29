@@ -134,3 +134,18 @@ class Solution {
         return memo[row][col][balance] = canFormValidPath;
     }
 }
+
+
+/*
+
+Complexity
+
+Time complexity:
+    O(m × n × (m + n))
+
+Space complexity:
+    O(m × n × (m + n))
+
+
+
+*/
