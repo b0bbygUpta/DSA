@@ -59,3 +59,22 @@ class Solution {
         return dp[n - 1][m - 1][0];
     }
 }
+
+
+/* 
+
+Complexity Analysis
+Let W be the machine word size.
+
+Time complexity:
+      O(nm(n+m)/W) or O(nm(n+m)).
+
+Suppose the input grid is an n×m matrix. There are n⋅m cells, and each cell has at most n+m states. The time complexity of these transitions depends on the implementation; see the State Transition Implementation Details section above.
+
+Space complexity: 
+      O(nm(n+m)).
+
+This is the space cost for the dynamic programming array.
+
+
+*/ 
