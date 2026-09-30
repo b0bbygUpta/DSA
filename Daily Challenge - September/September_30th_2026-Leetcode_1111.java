@@ -23,3 +23,21 @@ class Solution {
         return arr;
     }
 }
+
+/*
+
+Complexity Analysis
+Let n be the length of the string.
+
+Time complexity: O(n).
+
+We only need to traverse the input string once.
+
+Space complexity: O(1).
+
+Apart from the answer array, we only need a constant number of variables.
+
+
+
+
+*/
