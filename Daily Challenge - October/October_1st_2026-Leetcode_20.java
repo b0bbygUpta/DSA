@@ -26,3 +26,18 @@ class Solution {
         return st.isEmpty();
     }
 }
+
+/* 
+
+Complexities 
+
+Time complexity:
+    O(n) 
+
+Space complexity:
+    O(1) -> for map because map only contains 3 elements 
+
+-----> Overall space complexity,
+        O(n) 
+
+*/ 
