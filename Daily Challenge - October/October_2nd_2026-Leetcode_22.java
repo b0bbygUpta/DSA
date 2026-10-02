@@ -47,3 +47,31 @@ Complexities
 
 
 */ 
+
+APPROACH II: 
+  // Using Dynamic-Programming 
+  
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<List<String>> ans=new ArrayList<>();
+        ans.add(Arrays.asList(""));
+
+        for(int i=1;i<=n;i++){
+            List<String> curr=new ArrayList<>();
+            for(int j=0;j<i;j++){
+                for(String left: ans.get(j)){
+                    for(String right: ans.get(i-1-j)){
+                        curr.add('('+left+')'+right);
+                    }
+                }
+            }
+            ans.add(curr);
+        }
+
+        return ans.get(n);
+
+    }
+}
+
+
+
