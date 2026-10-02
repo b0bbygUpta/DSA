@@ -74,4 +74,15 @@ class Solution {
 }
 
 
+/* 
 
+Complexities: 
+
+    Time Complexity:
+        O(Cn.n)
+
+    Space Complexity:
+        O(Cn.n) (for resulT+DP table)
+
+
+*/ 
