@@ -33,3 +33,17 @@ class Solution {
         }
     }
 }
+
+
+/*
+
+Complexities 
+    
+    Time Complexiy:
+        𝑂(𝐶𝑛⋅𝑛)
+    
+    Space Complexity:
+        𝑂(𝐶𝑛⋅𝑛)(for result) + O(n)(for recursion)
+
+
+*/ 
