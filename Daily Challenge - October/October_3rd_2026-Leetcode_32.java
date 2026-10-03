@@ -91,6 +91,8 @@ APPROACH III:
       If at any point one type of bracket outnumbers the other in a way that makes balance impossible, you reset the counters.      
       You update the maximum length whenever the counts are equal.
   */
+
+  
 class Solution {
     public int longestValidParentheses(String s) {
         int left=0, right=0, count=0;
