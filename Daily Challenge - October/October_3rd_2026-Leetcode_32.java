@@ -28,3 +28,15 @@ class Solution {
         return count;
     }
 }
+
+/* 
+
+Complexities 
+
+  Time Complexity: 
+      O(n) -> as only one iteration
+
+  Space Complexity:
+      O(n) 
+
+*/
