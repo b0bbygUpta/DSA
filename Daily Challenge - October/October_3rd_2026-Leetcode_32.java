@@ -83,3 +83,54 @@ Complexities
       O(n) 
 
 */
+
+APPROACH III:
+  /*
+    A valid parentheses substring must have equal numbers of ( and ).      
+      While scanning:      
+      If at any point one type of bracket outnumbers the other in a way that makes balance impossible, you reset the counters.      
+      You update the maximum length whenever the counts are equal.
+  */
+class Solution {
+    public int longestValidParentheses(String s) {
+        int left=0, right=0, count=0;
+        int n=s.length();
+
+        for(int i=0;i<n;i++){
+            if(s.charAt(i) == '('){
+                left++;
+            }
+            else{
+                right++;
+            }
+            if(left == right){
+                count=Math.max(count,right*2);
+            }
+            else if(right>left){
+                left=0;
+                right=0;
+            }
+        }
+        
+        left=0;
+        right=0;
+
+        for(int i=n-1;i>=0;i--){
+            if(s.charAt(i) == '('){
+                left++;
+            }
+            else{
+                right++;
+            }
+            if(left == right){
+                count=Math.max(count,left*2);
+            }
+            else if(right<left){
+                left=0;
+                right=0;
+            }
+        }
+
+        return count;
+    }
+}
