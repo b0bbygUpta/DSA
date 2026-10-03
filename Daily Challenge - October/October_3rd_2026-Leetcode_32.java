@@ -134,3 +134,14 @@ class Solution {
         return count;
     }
 }
+
+/* 
+Complexities: 
+
+    Time Complexity: 
+        O(n) -> for two linear iterations.
+
+    Space Complexity: 
+        O(1) -> only for counter.
+
+*/
