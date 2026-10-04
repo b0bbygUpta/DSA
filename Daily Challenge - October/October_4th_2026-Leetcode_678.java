@@ -67,3 +67,39 @@ Complexities
   Space Comoplexity: 
       O(1) -> because only variables are getting stored
   
+APPROACH III:
+  // Using 2D Dynamic Programming 
+
+class Solution {
+    public boolean checkValidString(String s) {
+        int l=s.length();
+
+        boolean[][] dp=new boolean[l+1][l+1];
+        dp[0][0]=true;
+
+        for(int i=0;i<l;i++){
+            for(int j=0;j<=l;j++){
+                if(!dp[i][j]){
+                    continue;
+                }
+                if(s.charAt(i) == '('){
+                    dp[i+1][j+1]=true;
+                }
+                else if(s.charAt(i) == ')'){
+                    // dp[i+1][j+1]=true;
+                    if(j>0){
+                        dp[i+1][j-1]=true;
+                    }
+                }
+                else{
+                    dp[i+1][j]=true;
+                    dp[i+1][j+1]=true;
+                    if(j>0){
+                        dp[i+1][j-1]=true;
+                    }
+                }
+            }
+        }
+        return dp[l][0];
+    }
+}
