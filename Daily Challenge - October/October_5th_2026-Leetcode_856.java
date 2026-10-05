@@ -23,3 +23,12 @@ class Solution {
         return st.pop();
     }
 }
+
+/* 
+
+Complexities: 
+    Time complexity:
+            O(n)
+    Space complexity: 
+            O(n)
+*/ 
