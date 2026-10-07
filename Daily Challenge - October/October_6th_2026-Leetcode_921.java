@@ -26,3 +26,13 @@ class Solution {
 
     }
 }
+
+
+/* 
+Complexities
+
+    Time complexity: 
+        O(n)
+    Space complexity: 
+        O(1)
+*/
