@@ -43,3 +43,47 @@ Complexities:
     Space complexity: 
         O(1)
 */ 
+
+
+APPROACH II: 
+  // Using Stack for this implementation
+  
+class Solution {
+    public int minInsertions(String s) {
+        Stack<Character> st = new Stack<>();
+        int insertions = 0;
+        int i = 0;
+
+        while (i < s.length()) {
+            char c = s.charAt(i);
+
+            if (c == '(') {
+                st.push('(');
+                i++;
+            } else { // c == ')'
+                if (i + 1 < s.length() && s.charAt(i + 1) == ')') {
+                    // Found "))"
+                    if (!st.isEmpty()) {
+                        st.pop(); // match with '('
+                    } else {
+                        insertions++; // need to insert '('
+                    }
+                    i += 2; // consume both ')'
+                } else {
+                    // Single ')'
+                    if (!st.isEmpty()) {
+                        st.pop(); // match with '('
+                        insertions++; // need one more ')'
+                    } else {
+                        insertions += 2; // need '(' + extra ')'
+                    }
+                    i++;
+                }
+            }
+        }
+
+        // Any remaining '(' need two ')'
+        insertions += st.size() * 2;
+        return insertions;
+    }
+}
