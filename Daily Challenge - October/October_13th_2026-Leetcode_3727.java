@@ -23,3 +23,13 @@ class Solution {
         return ans;
     }
 }
+
+
+/* 
+Complexities
+
+    Time complixity:
+        O(nlogn) 
+    Space complixity: 
+        O(n) or O(logn)
+*/ 
