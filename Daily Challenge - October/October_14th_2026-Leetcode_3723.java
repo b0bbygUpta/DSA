@@ -25,3 +25,16 @@ class Solution {
       return ans.toString();
     }
 }
+
+/* 
+Complexities: 
+
+   Let 'n' be the required number of digits.
+
+   Time Complexity:
+       O(n) --> We need to construct an answer string of length 'n'
+
+   Space Complexity: 
+       O(1) --> We use only a constant number of variables, excluding the space for the return value.
+       
+*/
