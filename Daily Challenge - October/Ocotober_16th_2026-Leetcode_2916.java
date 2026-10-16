@@ -79,3 +79,16 @@ class BIT{
 
 
 }
+
+
+
+/* 
+Complexities: 
+
+    Time complexity:
+        O(nlogn) 
+
+
+    Space complexity: 
+        O(n) 
+*/ 
