@@ -147,3 +147,18 @@ class Solution {
         return parent[x];
     }
 }
+
+
+/* 
+Complexity: 
+
+Let n be the length of the array nums, and M be the maximum value in the array.
+
+Time complexity: O(nlogn+nlogM).
+
+Calculating the digit sums takes O(nlogM), and sorting takes O(nlogn). The union-find operations use only path compression, without union by rank, and take O(nlogn) amortized time. The overall time complexity is O(nlogn+nlogM).
+
+Space complexity: O(n).
+
+We need four auxiliary arrays, digitSum, indices, targetPos, and parent, each taking O(n) space.
+*/
