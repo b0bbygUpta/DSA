@@ -70,3 +70,18 @@ class Solution {
         return sum;
     }
 }
+
+
+/* 
+Complexity:
+
+Let n be the length of the array nums, and M be the maximum value in the array.
+
+Time complexity: O(nlogn+nlogM).
+
+Calculating the digit sums takes O(nlogM), sorting takes O(nlogn), and traversing the permutation cycles takes O(n). The overall time complexity is O(nlogn+nlogM).
+
+Space complexity: O(n).
+
+We need four auxiliary arrays, digitSum, indices, targetPos, and visited, each taking O(n) space.
+*/
