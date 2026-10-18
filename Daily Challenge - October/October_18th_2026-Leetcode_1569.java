@@ -121,3 +121,10 @@ class Solution {
         return (lw*rw%mod)*totalw%mod;
     }
 }
+
+
+/* 
+Complexities:
+    Same as the above approach
+    
+*/
