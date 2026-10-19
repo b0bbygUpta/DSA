@@ -3,7 +3,7 @@
 
 
 APPROACH I:
-  // Using Implementation of QuickSort 
+  // Using counters with for-loop 
   
 class Solution {
     public List<Integer> targetIndices(int[] nums, int target) {
