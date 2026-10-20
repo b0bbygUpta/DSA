@@ -70,3 +70,13 @@ class Solution {
         return Arrays.equals(nums1, nums2);
     }
 }
+
+
+/* 
+Complexities 
+
+    Time complexity
+        O(n root n)
+    Space complexity
+        O(n)
+*/
