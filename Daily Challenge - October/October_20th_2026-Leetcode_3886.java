@@ -1,15 +1,6 @@
 // -- Leetcode 3886 -- 
 // -- Sum of Sortable Intergs -- 
 
-
-
-
-
-
-
-
-
-
 APPOACHE II:
   // Using  Case Analysis
   
