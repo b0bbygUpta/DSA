@@ -27,3 +27,12 @@ class Solution {
         return 3;
     }
 }
+
+/*
+Complexity: 
+
+    Time complexity:
+        O(n)
+    Space complexity: 
+        O(1)
+*/
