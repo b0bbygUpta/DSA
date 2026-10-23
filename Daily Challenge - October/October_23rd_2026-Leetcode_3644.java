@@ -30,3 +30,22 @@ Complexities
     Space complexity
         O(1)
 */
+
+APPROACH II:
+  // Using Treaverse and Compute the Bitwise AND
+  
+class Solution {
+    public int sortPermutation(int[] nums) {
+        int n=nums.length;
+        int k=(1<<17)-1;
+        int a=k;
+
+        for(int i=0;i<n;i++){
+            if(nums[i] == i) continue;
+            a &= nums[i];
+        }
+        
+        return a == k ? 0 : a;
+
+    }
+}
