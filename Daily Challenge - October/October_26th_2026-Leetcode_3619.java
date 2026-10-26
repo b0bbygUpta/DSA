@@ -37,3 +37,12 @@ class Solution {
 
     }
 }
+
+/* 
+Complexities: 
+    Time complexity
+        O(m.n)
+    Space complexity
+        O(m.n)
+
+*/ 
