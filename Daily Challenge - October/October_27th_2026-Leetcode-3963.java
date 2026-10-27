@@ -15,3 +15,12 @@ class Solution {
         return grid;
     }
 }
+
+
+/* 
+Complexities: 
+    Time complexity 
+        O(m.n)
+    Space complexity
+        O(n)
+*/
