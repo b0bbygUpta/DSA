@@ -56,3 +56,13 @@ class Solution {
         return -1;
     }
 }
+
+/* 
+Complexities: 
+    Let n be the number of nodes, m be the length of edges, and k be the maximum allowed number of consecutive identical characters.
+    
+        Time complexity
+            O(nk + mklog(mk))
+        Space complexity
+            O(nk + mk)
+*/
