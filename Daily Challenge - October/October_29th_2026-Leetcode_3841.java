@@ -146,3 +146,11 @@ class Solution {
         return fa[u][0];
     }
 }
+
+/* 
+Compleixities: 
+        Time compleixity
+            O((n+q)log n)
+        Space complexitity
+            o(n log n)
+*/
