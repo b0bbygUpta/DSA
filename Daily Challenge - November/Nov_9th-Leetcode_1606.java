@@ -25,3 +25,12 @@ class Solution {
         return IntStream.range(0, k).filter(x -> handled[x] == most).boxed().toList();
     }
 }
+
+/*
+Complexity:
+
+    Time complexity: 
+            O(k+nlogk): each request goes in and out each heap at most once
+    Space complexity: 
+            O(k+n): k for each heap, n for handled
+*/
