@@ -28,3 +28,48 @@ class ProductOfNumbers {
     }
 }
 
+
+
+class ProductOfNumbers {
+    private Stack<Integer> st=new Stack<>();
+    private int size=0;
+
+    public ProductOfNumbers() {
+        // st.push(1);
+        this.st.push(1);
+        this.size=0;
+
+    }
+    
+    public void add(int num) {
+        if(num == 0){
+            // st=new Stack<Integer>();
+            // st.add(1);
+            this.st=new Stack<>();
+            this.st.push(1);
+            size=0;
+
+        }else{
+            // st.add(st.peek()*num);
+            this.st.push(this.st.get(size)*num);
+            this.size++;
+        }
+    }
+    
+    public int getProduct(int k) {
+        // if(k >= st.size()) return 0;
+        if(k > this.size) return 0;
+
+        // int n=st.size();
+        // return(
+        //     st.get(n-1)/
+        //     st.get(n-k-1)
+        // );
+
+        return(
+            this.st.get(this.size)/
+            this.st.get(this.size-k)
+        );
+    }
+}
+
