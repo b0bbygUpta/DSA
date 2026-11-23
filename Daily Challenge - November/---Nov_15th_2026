@@ -1,0 +1,88 @@
+// Leetcode 1524
+
+
+class Solution {
+    int mod=1000000007;
+
+    public int numOfSubarrays(int[] arr) {
+        int n=arr.length;
+        int[][] dp=new int[2][2];
+        int count=dp[1][0];
+        for(int i=0;i<n;i++){
+            int idx=i&1;
+            int parity=arr[i]&1;
+            dp[parity][idx]=(1+dp[0][1-idx])%mod;
+            dp[1-parity][idx]=dp[1][1-idx]%mod;
+            count=(count+dp[1][idx])%mod;
+        }   
+        return count;
+    }
+}
+
+
+
+
+class Solution {
+    int mod=1000000007;
+
+    public int numOfSubarrays(int[] arr) {
+        int ans=0, prefixSum=0;
+        int odd=0, even=1;
+        for(int i: arr){
+            prefixSum+=i;
+            if(prefixSum%2 == 0){
+                ans+=odd;
+                even++;
+            }else{
+                ans+=even;
+                odd++;
+            }
+            ans%=mod;
+        }    
+        return ans;
+    }
+}
+
+
+
+
+
+
+// Time Limit Exceeded
+
+
+class Solution {
+    int mod=1000000007;
+
+    public int numOfSubarrays(int[] arr) {
+        int n=arr.length;
+        int ans=0;
+        for(int len=0;len<n;len++){
+            for(int i=0;i<n;i++){
+                int sum=helpAdd(i,len,arr);
+                if(sum%2!=0){
+                    // ans++;
+                    ans=(ans+1)%mod;
+                }
+            }
+        }    
+
+        // for(int i=0;i<n;i++){
+        //     for(int len=i;len<n;len++){
+        //         int sum=helpAdd(i,len,arr);
+        //         if(sum%2!=0){
+        //             ans=(ans+1)%mod;
+        //         }
+        //     }
+        // }
+        return ans;
+    }
+
+    public int helpAdd(int start,int len, int[] arr){
+        int sum=0;
+        for(int i=start;i<=len;i++){
+            sum+=arr[i];
+        }
+        return sum;
+    }
+}
