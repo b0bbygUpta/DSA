@@ -73,3 +73,34 @@ class ProductOfNumbers {
     }
 }
 
+
+class ProductOfNumbers {
+
+    private Stack<Integer> st;
+
+    public ProductOfNumbers() {
+        st=new Stack<>();
+
+    }
+    
+    public void add(int num) {
+        st.push(num);
+
+        // System.out.println("st: "+st.toString());
+
+
+    }
+    
+    public int getProduct(int k) {
+
+        int res=1;
+
+        for(int i=k;i>0;i--){
+            res*=st.get(st.size()-i);
+        }
+
+        return res;
+
+
+    }
+}
