@@ -1,0 +1,81 @@
+// Leetcode 2243
+
+
+
+class Solution {
+    public String digitSum(String s, int k) {
+        while(s.length() > k){
+            s=help(s,k);
+        }        
+        return s;
+    }
+    public String help(String s, int k){
+        StringBuilder ans=new StringBuilder();
+
+        for(int i=0;i<s.length();i+=k){
+            int sum=0;
+            for(int j=i;j<Math.min(i+k,s.length());j++){
+                sum+=s.charAt(j)-'0';
+            }
+            ans.append(sum);
+        }
+        return ans.toString();
+    }
+}
+
+
+// class Main {
+//     public String digitSum(String s, int k) {
+//         int n=s.length();
+//         String ans=new String();
+
+//         while(s.length() > k){
+//             s=help(s,k,ans);
+//         }
+
+//         // ans+=help(s,k,"");
+      
+//         // while(ans.length()>k) ans=help(ans,k,"");
+
+//         return s;
+
+//         // return "sk";
+
+
+//     }
+//     public String help(String s, int k, String ans){
+//         int n=s.length();
+//         String str="";
+        
+//         for(int i=0;i<n;i++){
+//             // String str="";
+//             str+=s.charAt(i);
+//             if((i+1)%k==0 || i == n-1){
+//                 // str+=s.charAt(i);
+//                 ans+=sum(str);
+//                 System.out.println("Str: "+str);
+//                 str="";
+//                 System.out.println("Str: "+str);
+//             }
+//         }
+//         // System.out.println("ans: "+ans);
+
+//         return ans;
+
+
+//     }
+//     public int sum(String str){
+//         int n=str.length();
+//         int sum=0;
+//         for(int i=0;i<n;i++){
+//             // sum+=Integer.parseInt(String.valueOf(str.charAt(i)));
+//             sum+=str.charAt(i)-'0';
+
+//         }
+//         System.out.println("sum: "+sum+" ");
+
+//         return sum;
+
+
+//     }
+// }
