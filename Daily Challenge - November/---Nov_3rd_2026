@@ -1,0 +1,76 @@
+// Leetcode 3736
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int max=nums[0];
+        int ans=0;
+        
+        for(int i: nums){
+            if(max<i){
+                max=i;
+            }
+        }
+
+        for(int i: nums){
+            ans+=max-i;
+        }
+
+        return ans;
+
+
+        // return 0;
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int max=nums[0];
+        int ans=0;
+
+        for(int i: nums){
+            ans+=i;
+            if(max<i){
+                max=i;
+            }
+        }
+
+        // for(int i: nums){
+        //     ans+=max-i;
+        // }
+
+        // return ans;
+
+        return max*nums.length-ans;
+
+        // return 0;
+
+
+
+    }
+}
