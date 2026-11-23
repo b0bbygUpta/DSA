@@ -1,0 +1,216 @@
+// Leetcode 453
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+      int lo=Arrays.stream(nums).min().getAsInt(), moves=0;
+      for(int x: nums) moves+=x-lo;
+      return moves;  
+    }
+}
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int n=nums.length;
+        if(n<=1 || nums==null) return 0;
+        int min=nums[0];
+        for(int i: nums){
+            if(i<min){
+                min=i;
+            }
+        }
+        int moves=0;
+        for(int i: nums){
+            moves+=i-min;
+        }
+        return moves;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int n=nums.length;
+        int min=nums[0];
+        int sum=0;
+        for(int i:nums){
+            min=Math.min(min,i);
+            sum+=i;
+        }
+        return (int)(sum-(long)min*n);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int n=nums.length;
+        int min=nums[0];
+        int sum=0;
+        for(int i:nums){
+            min=Math.min(min,i);
+            sum+=i;
+        }
+        return (sum-min*n);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int n=nums.length;
+        int min=nums[0];
+        int sum=0;
+        for(int i:nums){
+            // min=Math.min(min,i);
+            if(min>i){
+                min=i;
+            }
+            sum+=i;
+        }
+        return (sum-min*n);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int n=nums.length;
+        int min=nums[0];
+        int sum=0;
+        for(int i:nums){
+            // min=Math.min(min,i);
+            if(min>i){
+                min=i;
+            }
+            sum+=i;
+        }
+        return sum-(min*n);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Time Limit Exceeded 
+
+
+class Solution {
+    public int minMoves(int[] nums) {
+
+        int n = nums.length;
+        int count=0;
+        
+        if(check(nums)){
+            return 0;
+        }
+        
+        while(!check(nums)){
+            inc(nums);
+            count++;
+        }
+
+        // System.out.println("arr: " + Arrays.toString(nums));
+        // System.out.println("equal: " + check(nums));
+        // System.out.println("count: "+count);
+
+        return count;
+
+    }
+
+    private void inc(int[] arr){
+        int n=arr.length;
+        // index of maximum element
+        int maxidx = 0;
+        for(int i = 1; i < n; i++){
+            if(arr[i] > arr[maxidx]){
+                maxidx = i;
+            }
+        }
+
+        for(int i = 0; i < n; i++){
+            if(i != maxidx){
+                arr[i]++;
+            }
+        }
+    }
+
+    private boolean check(int[] arr){
+        
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] != arr[i - 1]){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
