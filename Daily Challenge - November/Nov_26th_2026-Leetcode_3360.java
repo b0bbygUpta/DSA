@@ -16,3 +16,10 @@ class Solution {
         return k%2==1;
     }
 }
+
+Complexity:
+    Time complexity:
+        O(1)
+    Space complexity:
+        O(1)
+        
