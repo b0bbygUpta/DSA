@@ -1,0 +1,52 @@
+// -- Leetcode 3934 --
+// -- Smallest Unique Subarray --
+
+
+APPROACH: 
+  Using Binary Search on the Answer + Rolling Hash
+
+class Solution {
+    public int smallestUniqueSubarray(int[] nums) {
+        final long MOD=1_00_00_00_00_7;
+        final long BASE=911382323L;
+
+        int n=nums.length;
+        long[] h=new long[n+1];
+        long[] p=new long[n+1];
+        p[0]=1;
+
+        for(int i=0;i<n;i++){
+            h[i+1]=(h[i]*BASE+nums[i])%MOD;
+            p[i+1]=(p[i]*BASE)%MOD;
+        }
+
+        int lo=1, hi=n;
+        while(lo<hi){
+            int mid=lo+(hi-lo)/2;
+            if(check(mid,n,h,p,MOD)){
+                hi=mid;
+            }else{
+                lo=mid+1;
+            }
+        }
+
+        return lo;
+    }
+
+    private boolean check(int len, int n, long[] h, long[] p, long MOD){
+        Map<Long,Integer> cnt=new HashMap<>();
+        for(int i=0;i+len<=n;++i){
+            int r=i+len;
+            long key=(h[r]-((h[i]*p[len])%MOD)+MOD)%MOD;
+            cnt.merge(key,1,Integer::sum);
+        }
+
+        for(int times: cnt.values()){
+            if(times == 1){
+                return true;
+            }            
+        }
+        return false;
+        
+    }
+}
